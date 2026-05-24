@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pyla Thanuja | Portfolio</title>
+    <style>
+        /* Base Reset & Variables */
+        :root {
+            --primary-color: #1e3c72;
+            --secondary-color: #2a5298;
+            --accent-color: #00d2ff;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --bg-light: #f4f6f9;
+            --badge-bg: #e8f4fd;
+            --tag-bg: #eaedd0;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            padding: 40px 20px;
+        }
+
+        .portfolio-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #ffffff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: #ffffff;
+            padding: 40px;
+            border-bottom: 5px solid var(--accent-color);
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            color: #e0e6ed;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 0.9rem;
+            color: #f0f4f8;
+        }
+
+        .contact-item span {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        /* Main Grid Layout */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 35% 65%;
+        }
+
+        /* Columns */
+        .left-column {
+            background-color: #fafbfc;
+            padding: 30px;
+            border-right: 1px solid #e1e4e8;
+        }
+
+        .right-column {
+            padding: 30px;
+        }
+
+        /* Section Styling */
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid var(--primary-color);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        /* Profile Callout Card */
+        .profile-card {
+            background-color: #ffffff;
+            border-left: 4px solid var(--primary-color);
+            padding: 15px;
+            border-radius: 0 6px 6px 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+            text-align: justify;
+            font-size: 0.95rem;
+        }
+
+        /* Item Blocks */
+        .item {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .item-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .item-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-style: italic;
+            margin-bottom: 5px;
+        }
+
+        .item-date {
+            display: inline-block;
+            font-style: normal;
+            font-weight: 600;
+            color: var(--primary-color);
+            background: #e1f5fe;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            margin-bottom: 8px;
+        }
+
+        .item-description {
+            font-size: 0.95rem;
+            margin-top: 8px;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin-top: 8px;
+        }
+
+        li {
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+        }
+
+        /* Badges & Tags */
+        .skill-group {
+            margin-bottom: 15px;
+        }
+
+        .skill-group-title {
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: #34495e;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: #ffffff;
+            color: var(--text-dark);
+            border: 1px solid #cbd5e1;
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            border-radius: 4px;
+            margin: 3px 2px;
+            font-weight: 500;
+        }
+
+        .tag-container {
+            margin-top: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .tag {
+            display: inline-block;
+            background-color: var(--badge-bg);
+            color: var(--primary-color);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 4px;
+            border: 1px solid #d4e6f1;
+        }
+
+        /* Certifications Blocks */
+        .cert-item {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            padding: 10px;
+            margin-bottom: 8px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+        }
+
+        .cert-title {
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--primary-color);
+        }
+
+        .cert-issuer {
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-layout {
+                grid-template-columns: 100%;
+            }
+            .left-column {
+                border-right: none;
+                border-bottom: 1px solid #e1e4e8;
+            }
+            body {
+                padding: 10px;
+            }
+            .header {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="portfolio-container">
+        
+        <div class="header">
+            [span_0](start_span)<h1>Pyla Thanuja</h1>[span_0](end_span)
+            <div class="subtitle">Electronics & Communication Engineer | [span_1](start_span)VLSI & Digital Design Enthusiast</div>[span_1](end_span)
+            <div class="contact-info">
+                [span_2](start_span)<div class="contact-item"><span>Phone:</span> +91 9493224485</div>[span_2](end_span)
+                [span_3](start_span)<div class="contact-item"><span>Email:</span> pylathanuja@gmail.com</div>[span_3](end_span)
+                [span_4](start_span)<div class="contact-item"><span>Location:</span> Narsipatnam, Andhra Pradesh</div>[span_4](end_span)
+                [span_5](start_span)[span_6](start_span)<div class="contact-item"><span>GitHub:</span> Pyla Thanuja</div>[span_5](end_span)[span_6](end_span)
+            </div>
+        </div>
+
+        <div class="main-layout">
+            
+            <div class="left-column">
+                
+                <div class="section">
+                    [span_7](start_span)<div class="section-title">Education</div>[span_7](end_span)
+                    
+                    <div class="item">
+                        [span_8](start_span)[span_9](start_span)<div class="item-title">B.Tech in ECE</div>[span_8](end_span)[span_9](end_span)
+                        [span_10](start_span)<div class="item-subtitle">Aditya University, Surampalem</div>[span_10](end_span)
+                        <div class="item-description">
+                            [span_11](start_span)<strong>CGPA: 9.30</strong><br>[span_11](end_span)
+                            [span_12](start_span)<span style="font-size: 0.8rem; color: var(--text-light);">Pursuing 5th Semester</span>[span_12](end_span)
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        [span_13](start_span)<div class="item-title">Intermediate (MPC)</div>[span_13](end_span)
+                        [span_14](start_span)<div class="item-subtitle">Sri Pragati Junior College, Narsipatnam</div>[span_14](end_span)
+                        <div class="item-description">
+                            [span_15](start_span)<strong>Percentage: 97.9%</strong><br>[span_15](end_span)
+                            [span_16](start_span)<span style="font-size: 0.8rem; color: var(--text-light);">2022 - 2024</span>[span_16](end_span)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    [span_17](start_span)<div class="section-title">Skills</div>[span_17](end_span)
+                    
+                    <div class="skill-group">
+                        [span_18](start_span)<div class="skill-group-title">Languages</div>[span_18](end_span)
+                        [span_19](start_span)<div class="badge">Verilog</div>[span_19](end_span)
+                        [span_20](start_span)<div class="badge">C</div>[span_20](end_span)
+                        [span_21](start_span)<div class="badge">C++</div>[span_21](end_span)
+                        [span_22](start_span)<div class="badge">Python</div>[span_22](end_span)
+                    </div>
+
+                    <div class="skill-group">
+                        [span_23](start_span)<div class="skill-group-title">Tools & EDA</div>[span_23](end_span)
+                        [span_24](start_span)<div class="badge">Xilinx Vivado</div>[span_24](end_span)
+                        [span_25](start_span)<div class="badge">EDA Playground</div>[span_25](end_span)
+                        [span_26](start_span)<div class="badge">Arduino IDE</div>[span_26](end_span)
+                        [span_27](start_span)<div class="badge">Gowin EDA</div>[span_27](end_span)
+                    </div>
+
+                    <div class="skill-group">
+                        [span_28](start_span)<div class="skill-group-title">Core Competencies</div>[span_28](end_span)
+                        [span_29](start_span)<div class="badge">Digital Design</div>[span_29](end_span)
+                        [span_30](start_span)<div class="badge">HDL Circuit Design</div>[span_30](end_span)
+                        [span_31](start_span)<div class="badge">Logic Design</div>[span_31](end_span)
+                        [span_32](start_span)[span_33](start_span)<div class="badge">Problem Solving</div>[span_32](end_span)[span_33](end_span)
+                    </div>
+                </div>
+
+                <div class="section">
+                    [span_34](start_span)<div class="section-title">Certifications</div>[span_34](end_span)
+                    
+                    <div class="cert-item">
+                        [span_35](start_span)<div class="cert-title">Verilog Language and Application v28.0</div>[span_35](end_span)
+                        [span_36](start_span)<div class="cert-issuer">Cadence Design Systems</div>[span_36](end_span)
+                    </div>
+
+                    <div class="cert-item">
+                        [span_37](start_span)<div class="cert-title">Digital IC Design Fundamentals v2.0</div>[span_37](end_span)
+                        [span_38](start_span)<div class="cert-issuer">Cadence Design Systems</div>[span_38](end_span)
+                    </div>
+
+                    <div class="cert-item">
+                        [span_39](start_span)<div class="cert-title">Semiconductor 101 v101</div>[span_39](end_span)
+                        [span_40](start_span)<div class="cert-issuer">Cadence Design Systems</div>[span_40](end_span)
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="right-column">
+                
+                <div class="section">
+                    [span_41](start_span)<div class="section-title">Professional Profile</div>[span_41](end_span)
+                    <div class="profile-card">
+                        [span_42](start_span)Currently pursuing the 5th semester of B.Tech in Electronics and Communication Engineering, with a strong foundation in electronics, digital systems, communication engineering, and VLSI.[span_42](end_span) [span_43](start_span)A quick learner with a passion for technology and problem-solving, seeking opportunities to apply theoretical concepts, gain practical exposure, and grow as a professional engineer.[span_43](end_span) [span_44](start_span)[span_45](start_span)Actively building practical expertise in hardware description languages and synthesis workflows.[span_44](end_span)[span_45](end_span)
+                    </div>
+                </div>
+
+                <div class="section">
+                    [span_46](start_span)<div class="section-title">Engineering Internships</div>[span_46](end_span)
+                    
+                    <div class="item">
+                        [span_47](start_span)<div class="item-date">May 2026 - Jul 2026</div>[span_47](end_span)
+                        [span_48](start_span)<div class="item-title">VLSI Intern</div>[span_48](end_span)
+                        [span_49](start_span)<div class="item-subtitle">EduExpose</div>[span_49](end_span)
+                        <div class="item-description">
+                            [span_50](start_span)Focused directly on front-end digital design and hardware verification ecosystems.[span_50](end_span)
+                            <ul>
+                                [span_51](start_span)<li>Responsible for writing clean, synthesizable Verilog RTL code to implement targeted digital logic.[span_51](end_span)</li>
+                                [span_52](start_span)<li>Developed robust simulation and testbench environments to validate comprehensive digital logic functionality.[span_52](end_span)</li>
+                                [span_53](start_span)<li>Actively gained hands-on experience working with modern EDA tools, debugging mechanics, and industry-standard verification methodologies.[span_53](end_span)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    [span_54](start_span)<div class="section-title">Featured Projects</div>[span_54](end_span)
+                    
+                    <div class="item">
+                        [span_55](start_span)<div class="item-date">2024 - Present</div>[span_55](end_span)
+                        [span_56](start_span)<div class="item-title">Smart Bus Tracking and Safety System</div>[span_56](end_span)
+                        [span_57](start_span)<div class="item-subtitle">Safe Drive Alert System (IoT & Embedded Engineering Domain)</div>[span_57](end_span)
+                        <div class="item-description">
+                            [span_58](start_span)Engineered an end-to-end IoT-based tracking and monitoring solution developed to observe bus ecosystem diagnostics in real time, establishing automatic triggers to send emergency alerts during accidents or unexpected hazardous road anomalies.[span_58](end_span)
+                            <ul>
+                                [span_59](start_span)<li>Linked edge microcontroller setups with web APIs to compute localized telemetric tracking configurations.[span_59](end_span)</li>
+                                [span_60](start_span)<li>Programmed cross-functional network routing linking firmware loops directly to a centralized web application.[span_60](end_span)</li>
+                            </ul>
+                            <div class="tag-container">
+                                [span_61](start_span)<span class="tag">Gowin EDA</span>[span_61](end_span)
+                                [span_62](start_span)<span class="tag">Arduino IDE</span>[span_62](end_span)
+                                [span_63](start_span)<span class="tag">Verilog</span>[span_63](end_span)
+                                [span_64](start_span)<span class="tag">React.js</span>[span_64](end_span)
+                                [span_65](start_span)<span class="tag">Node.js</span>[span_65](end_span)
+                                [span_66](start_span)<span class="tag">Flutter</span>[span_66](end_span)
+                                [span_67](start_span)<span class="tag">Firebase</span>[span_67](end_span)
+                                [span_68](start_span)<span class="tag">Google Maps API</span>[span_68](end_span)
+                                [span_69](start_span)<span class="tag">Groq API</span>[span_69](end_span)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

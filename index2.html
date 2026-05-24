@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pyla Thanuja — VLSI & ECE Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0c10;
+    --bg2: #0f1218;
+    --bg3: #141820;
+    --surface: #1a1f2e;
+    --surface2: #1e2433;
+    --border: rgba(99, 179, 237, 0.12);
+    --border2: rgba(99, 179, 237, 0.22);
+    --teal: #4fd1c5;
+    --teal2: #38b2ac;
+    --teal-dim: rgba(79, 209, 197, 0.08);
+    --teal-glow: rgba(79, 209, 197, 0.15);
+    --amber: #f6ad55;
+    --amber-dim: rgba(246, 173, 85, 0.08);
+    --text: #e2e8f0;
+    --text2: #94a3b8;
+    --text3: #64748b;
+    --mono: 'DM Mono', monospace;
+    --serif: 'DM Serif Display', serif;
+    --sans: 'Outfit', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-weight: 400;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* Grid pattern background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(79,209,197,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(79,209,197,0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 3rem;
+    background: rgba(10, 12, 16, 0.85);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 0.9rem;
+    color: var(--teal);
+    letter-spacing: 0.05em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+    font-family: var(--mono);
+    color: var(--text2);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--teal); }
+
+  /* SECTIONS */
+  section {
+    position: relative;
+    z-index: 1;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+  }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 8rem;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--teal);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--teal);
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(3.5rem, 8vw, 6.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--teal);
+  }
+
+  .hero-title-line2 {
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 4vw, 2.8rem);
+    color: var(--text2);
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+
+  .hero-desc {
+    max-width: 520px;
+    color: var(--text2);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--teal);
+    color: #0a0c10;
+    padding: 0.7rem 1.75rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-family: var(--mono);
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: #38b2ac; transform: translateY(-1px); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--teal);
+    padding: 0.7rem 1.75rem;
+    border-radius: 4px;
+    border: 1px solid var(--border2);
+    font-size: 0.85rem;
+    font-family: var(--mono);
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-secondary:hover { border-color: var(--teal); transform: translateY(-1px); }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2.2rem;
+    color: var(--teal);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    font-family: var(--mono);
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 0.3rem;
+  }
+
+  /* SECTION HEADERS */
+  .sec-tag {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--teal);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .sec-tag::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--teal);
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.15;
+    color: #fff;
+    margin-bottom: 3rem;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--text2);
+    margin-bottom: 1.2rem;
+    font-size: 0.95rem;
+  }
+
+  .about-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .detail-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 1.2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+
+  .detail-icon {
+    font-size: 0.7rem;
+    font-family: var(--mono);
+    color: var(--teal);
+    background: var(--teal-dim);
+    border: 1px solid rgba(79,209,197,0.2);
+    padding: 0.35rem 0.5rem;
+    border-radius: 3px;
+    white-space: nowrap;
+    margin-top: 0.1rem;
+  }
+
+  .detail-content {
+    font-size: 0.85rem;
+  }
+  .detail-content strong {
+    display: block;
+    color: var(--text);
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+  }
+  .detail-content span {
+    color: var(--text2);
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .skill-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: border-color 0.25s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--teal), transparent);
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+
+  .skill-card:hover {
+    border-color: var(--border2);
+    transform: translateY(-3px);
+  }
+  .skill-card:hover::before { opacity: 1; }
+
+  .skill-cat {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 1rem;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--text2);
+    background: rgba(148, 163, 184, 0.07);
+    border: 1px solid var(--border);
+    padding: 0.3rem 0.6rem;
+    border-radius: 3px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .tag:hover { color: var(--teal); border-color: rgba(79,209,197,0.3); }
+
+  .tag.highlight {
+    color: var(--teal);
+    background: var(--teal-dim);
+    border-color: rgba(79,209,197,0.2);
+  }
+
+  /* PROJECTS */
+  .project-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.25s;
+  }
+
+  .project-card::after {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(79,209,197,0.06), transparent 70%);
+    pointer-events: none;
+  }
+
+  .project-card:hover { border-color: var(--border2); }
+
+  .project-num {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--teal);
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+  }
+
+  .project-card h3 {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-subtitle {
+    font-size: 0.85rem;
+    color: var(--teal);
+    font-family: var(--mono);
+    margin-bottom: 1.2rem;
+  }
+
+  .project-desc {
+    color: var(--text2);
+    font-size: 0.9rem;
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .tech-tag {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    background: var(--teal-dim);
+    color: var(--teal);
+    border: 1px solid rgba(79,209,197,0.15);
+    padding: 0.25rem 0.65rem;
+    border-radius: 3px;
+  }
+
+  .project-link {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--text2);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--border2);
+    padding-bottom: 1px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .project-link:hover { color: var(--teal); border-color: var(--teal); }
+
+  /* EXPERIENCE */
+  .exp-item {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .exp-item:first-child { border-top: 1px solid var(--border); }
+
+  .exp-date {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--text3);
+    letter-spacing: 0.05em;
+    padding-top: 0.2rem;
+  }
+
+  .exp-role {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 0.25rem;
+  }
+
+  .exp-company {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--teal);
+    margin-bottom: 1rem;
+  }
+
+  .exp-desc {
+    color: var(--text2);
+    font-size: 0.88rem;
+    line-height: 1.75;
+  }
+
+  /* EDUCATION */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .edu-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.75rem;
+    transition: border-color 0.25s, transform 0.2s;
+  }
+  .edu-card:hover {
+    border-color: var(--border2);
+    transform: translateY(-2px);
+  }
+
+  .edu-period {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--teal);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+  }
+
+  .edu-card h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 0.3rem;
+    line-height: 1.4;
+  }
+
+  .edu-inst {
+    font-size: 0.82rem;
+    color: var(--text2);
+    margin-bottom: 0.75rem;
+  }
+
+  .edu-score {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--amber);
+    background: var(--amber-dim);
+    border: 1px solid rgba(246,173,85,0.2);
+    padding: 0.25rem 0.65rem;
+    border-radius: 3px;
+  }
+
+  /* CERTIFICATIONS */
+  .cert-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .cert-item {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    transition: border-color 0.2s, transform 0.15s;
+  }
+  .cert-item:hover {
+    border-color: var(--border2);
+    transform: translateX(4px);
+  }
+
+  .cert-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--teal);
+    flex-shrink: 0;
+  }
+
+  .cert-name {
+    font-size: 0.9rem;
+    color: var(--text);
+    flex: 1;
+  }
+
+  .cert-issuer {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--teal);
+    background: var(--teal-dim);
+    border: 1px solid rgba(79,209,197,0.15);
+    padding: 0.2rem 0.6rem;
+    border-radius: 3px;
+  }
+
+  /* CONTACT */
+  #contact {
+    text-align: center;
+    padding: 7rem 2rem;
+  }
+
+  #contact h2 {
+    margin-bottom: 1rem;
+  }
+
+  .contact-sub {
+    color: var(--text2);
+    font-size: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text2);
+    text-decoration: none;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    transition: color 0.2s, border-color 0.2s, transform 0.15s;
+  }
+  .contact-link:hover {
+    color: var(--teal);
+    border-color: var(--border2);
+    transform: translateY(-2px);
+  }
+
+  .contact-link svg {
+    width: 15px; height: 15px;
+    stroke: currentColor;
+    fill: none;
+  }
+
+  /* FOOTER */
+  footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid var(--border);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--text3);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up {
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards;
+  }
+
+  .fade-up:nth-child(1) { animation-delay: 0.1s; }
+  .fade-up:nth-child(2) { animation-delay: 0.25s; }
+  .fade-up:nth-child(3) { animation-delay: 0.4s; }
+  .fade-up:nth-child(4) { animation-delay: 0.55s; }
+  .fade-up:nth-child(5) { animation-delay: 0.7s; }
+
+  /* CURSOR BLINK */
+  .cursor {
+    display: inline-block;
+    width: 3px;
+    height: 0.9em;
+    background: var(--teal);
+    margin-left: 4px;
+    vertical-align: middle;
+    animation: blink 1s step-end infinite;
+  }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    nav { padding: 1rem 1.25rem; }
+    .nav-links { display: none; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .edu-grid { grid-template-columns: 1fr; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    h1 { font-size: 3rem; }
+    .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">PT<span class="cursor"></span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-eyebrow fade-up">ECE Engineer & VLSI Designer</div>
+  <h1 class="fade-up">Pyla<br><em>Thanuja</em></h1>
+  <div class="hero-title-line2 fade-up">Building digital systems from silicon up.</div>
+  <p class="hero-desc fade-up">
+    Electronics & Communication Engineering student with deep expertise in digital design, HDL, and hardware verification. Currently pursuing B.Tech while gaining hands-on VLSI experience at EduExpose.
+  </p>
+  <div class="hero-actions fade-up">
+    <a href="#projects" class="btn-primary">View My Work</a>
+    <a href="#contact" class="btn-secondary">Get in Touch</a>
+  </div>
+  <div class="hero-stats fade-up">
+    <div>
+      <div class="stat-num">9.30</div>
+      <div class="stat-label">CGPA</div>
+    </div>
+    <div>
+      <div class="stat-num">3</div>
+      <div class="stat-label">Certifications</div>
+    </div>
+    <div>
+      <div class="stat-num">4+</div>
+      <div class="stat-label">Technologies</div>
+    </div>
+    <div>
+      <div class="stat-num">97.9%</div>
+      <div class="stat-label">Intermediate Score</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-tag">01 &mdash; About</div>
+  <h2>Who I Am</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I'm a 3rd-year B.Tech student specializing in Electronics and Communication Engineering at Aditya University, maintaining a CGPA of 9.30. My passion lies at the intersection of hardware design and software implementation.
+      </p>
+      <p>
+        With a strong foundation in VLSI, digital logic, and HDL-based circuit design, I am actively building industry-ready skills through my internship at EduExpose — writing synthesizable Verilog RTL code and developing simulation environments for hardware verification.
+      </p>
+      <p>
+        I'm a quick learner who enjoys solving complex engineering problems and translating theoretical knowledge into functional, real-world systems.
+      </p>
+    </div>
+    <div class="about-details">
+      <div class="detail-row">
+        <div class="detail-icon">LOC</div>
+        <div class="detail-content">
+          <strong>Location</strong>
+          <span>Narsipatnam, India</span>
+        </div>
+      </div>
+      <div class="detail-row">
+        <div class="detail-icon">EDU</div>
+        <div class="detail-content">
+          <strong>Degree</strong>
+          <span>B.Tech in ECE — Aditya University</span>
+        </div>
+      </div>
+      <div class="detail-row">
+        <div class="detail-icon">ROLE</div>
+        <div class="detail-content">
+          <strong>Current Role</strong>
+          <span>VLSI Intern at EduExpose</span>
+        </div>
+      </div>
+      <div class="detail-row">
+        <div class="detail-icon">INT</div>
+        <div class="detail-content">
+          <strong>Interests</strong>
+          <span>Digital Design, HDL, Verification, IoT</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="sec-tag">02 &mdash; Skills</div>
+  <h2>Technical Toolkit</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-cat">Languages</div>
+      <div class="skill-tags">
+        <span class="tag highlight">Verilog</span>
+        <span class="tag highlight">C</span>
+        <span class="tag highlight">C++</span>
+        <span class="tag">Python</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">EDA Tools</div>
+      <div class="skill-tags">
+        <span class="tag highlight">Xilinx Vivado</span>
+        <span class="tag highlight">EDA Playground</span>
+        <span class="tag">Gowin EDA</span>
+        <span class="tag">Arduino IDE</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">Digital Design</div>
+      <div class="skill-tags">
+        <span class="tag highlight">RTL Design</span>
+        <span class="tag highlight">Hardware Verification</span>
+        <span class="tag">VLSI Front-End</span>
+        <span class="tag">Logic Design</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">Web / App Tech</div>
+      <div class="skill-tags">
+        <span class="tag">React.js</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">Flutter</span>
+        <span class="tag">Firebase</span>
+        <span class="tag">Google Maps API</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">Core Competencies</div>
+      <div class="skill-tags">
+        <span class="tag highlight">Problem Solving</span>
+        <span class="tag">Digital Logic</span>
+        <span class="tag">Circuit Design</span>
+        <span class="tag">IoT Systems</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-cat">Domain Knowledge</div>
+      <div class="skill-tags">
+        <span class="tag highlight">Communication Engg.</span>
+        <span class="tag">Embedded Systems</span>
+        <span class="tag">VLSI Design</span>
+        <span class="tag">Electronics</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="sec-tag">03 &mdash; Projects</div>
+  <h2>What I've Built</h2>
+  <div class="project-card">
+    <div class="project-num">Project / 01</div>
+    <h3>Safe Drive Alert System</h3>
+    <div class="project-subtitle">Smart Bus Tracking &amp; Safety System</div>
+    <p class="project-desc">
+      An IoT-based solution designed to monitor bus conditions in real time, automatically detecting accidents or hazardous events and alerting emergency services instantly. Integrates cloud services, GPS mapping, and AI-powered decision-making into a unified safety platform for public transit.
+    </p>
+    <div class="project-tech">
+      <span class="tech-tag">Gowin EDA</span>
+      <span class="tech-tag">Arduino IDE</span>
+      <span class="tech-tag">React.js</span>
+      <span class="tech-tag">Node.js</span>
+      <span class="tech-tag">Flutter</span>
+      <span class="tech-tag">Firebase</span>
+      <span class="tech-tag">Google Maps API</span>
+      <span class="tech-tag">Groq API</span>
+    </div>
+    <a href="https://github.com/Thanuja-1522/Safe-Drive-Alert-System" class="project-link">View on GitHub →</a>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="sec-tag">04 &mdash; Experience</div>
+  <h2>Where I've Worked</h2>
+  <div class="exp-item">
+    <div class="exp-date">May 2026 – Jul 2026</div>
+    <div>
+      <div class="exp-role">VLSI Intern</div>
+      <div class="exp-company">EduExpose</div>
+      <p class="exp-desc">
+        Working in front-end digital design and hardware verification. Responsible for writing clean, synthesizable Verilog RTL code and developing robust simulation environments to validate digital logic functionality. Actively gaining hands-on experience with EDA tools, debugging techniques, and industry-standard verification methodologies.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="sec-tag">05 &mdash; Education</div>
+  <h2>Academic Background</h2>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div class="edu-period">2024 – Present</div>
+      <h3>B.Tech in Electronics &amp; Communication Engineering</h3>
+      <div class="edu-inst">Aditya University, Surampalem</div>
+      <span class="edu-score">CGPA: 9.30</span>
+    </div>
+    <div class="edu-card">
+      <div class="edu-period">2022 – 2024</div>
+      <h3>Board of Intermediate Education (MPC)</h3>
+      <div class="edu-inst">Sri Pragati Junior College, Narsipatnam</div>
+      <span class="edu-score">Score: 97.9%</span>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="sec-tag">06 &mdash; Certifications</div>
+  <h2>Credentials</h2>
+  <div class="cert-list">
+    <div class="cert-item">
+      <div class="cert-dot"></div>
+      <div class="cert-name">Semiconductor 101 v1.01 (Online)</div>
+      <div class="cert-issuer">Cadence</div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-dot"></div>
+      <div class="cert-name">Digital IC Design Fundamentals v2.0 (Online)</div>
+      <div class="cert-issuer">Cadence</div>
+    </div>
+    <div class="cert-item">
+      <div class="cert-dot"></div>
+      <div class="cert-name">Verilog Language and Application v28.0 (Online)</div>
+      <div class="cert-issuer">Cadence</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sec-tag" style="justify-content:center; display:flex;">07 &mdash; Contact</div>
+  <h2>Let's Connect</h2>
+  <p class="contact-sub">Open to internships, collaborations, and exciting opportunities in VLSI & ECE.</p>
+  <div class="contact-links">
+    <a href="mailto:pylathanuja@gmail.com" class="contact-link">
+      <svg viewBox="0 0 24 24" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+      pylathanuja@gmail.com
+    </a>
+    <a href="tel:+919493224485" class="contact-link">
+      <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.7A2 2 0 012.18 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.15a16 16 0 006.93 6.93l1.51-1.51a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      +91 94932 24485
+    </a>
+    <a href="https://www.linkedin.com/in/pyla-thanuja-a58b0b330/" class="contact-link">
+      <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+    <a href="https://github.com/Thanuja-1522" class="contact-link">
+      <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+      GitHub
+    </a>
+  </div>
+</section>
+
+<footer>
+  <span>Designed &amp; built by Pyla Thanuja &mdash; 2026</span>
+</footer>
+
+</body>
+</html>
